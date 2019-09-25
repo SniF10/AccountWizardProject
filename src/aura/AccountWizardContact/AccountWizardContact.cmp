@@ -1,0 +1,44 @@
+<aura:component>
+
+    <aura:attribute name="contact" type="Contact" default=""/>
+    <aura:attribute name="index" type="Integer" default=""/>
+    <aura:attribute name="hideButton" type="Boolean" default=""/>
+    <aura:attribute name="message" type="String" default=""/>
+    <aura:attribute name="messageEmail" type="Boolean" default=""/>
+
+    <aura:handler name="init" value="{! this }" action="{! c.init }"/>
+
+    <aura:handler name="change" value="{! v.hideButton }" action="{! c.change }"/>
+
+    <aura:method name="validationFields" action="{!c.validationFields}" access="public">
+        <aura:attribute name="message" type="String" default="default message" />
+    </aura:method>
+
+    <aura:registerEvent name="ContactAddWizardEvent" type="c:ContactAddWizardEvent"/>
+    <aura:registerEvent name="ResultValidationEvent" type="c:ResultValidationEvent"/>
+
+    <lightning:layout verticalAlign="center" class="x-large">
+        <lightning:layoutItem flexibility="auto" padding="around-small" size="3">
+            <lightning:input type="text" name="First Name" label="First Name" value="{!v.contact.FirstName}"/>
+        </lightning:layoutItem>
+        <lightning:layoutItem flexibility="auto" padding="around-small" size="3">
+            <lightning:input type="text" name="Last Name" label="Last Name" value="{!v.contact.LastName}"/>
+            <lightning:formattedText value="{!v.message}" />
+        </lightning:layoutItem>
+        <lightning:layoutItem flexibility="auto" padding="around-small" size="3">
+            <lightning:input type="email" name="Email" label="Email" value="{!v.contact.Email}"/>
+            <lightning:formattedText value="{!v.messageEmail}" />
+        </lightning:layoutItem>
+        <lightning:layoutItem flexibility="auto" padding="around-small" size="1">
+            <div class="slds-p-left_medium slds-p-top_small" onclick="{!c.addContact }">
+                <lightning:icon iconName="utility:add" alternativeText="add"/>
+            </div>
+        </lightning:layoutItem>
+        <lightning:layoutItem flexibility="auto" padding="around-small" size="1">
+            <div aura:id="removeIcon" class="slds-p-left_medium slds-p-top_small" onclick="{!c.removeContact }">
+                <lightning:icon iconName="utility:dash" alternativeText="dash"/>
+            </div>
+        </lightning:layoutItem>
+    </lightning:layout>
+
+</aura:component>

@@ -1,0 +1,47 @@
+<aura:component implements="force:lightningQuickActionWithoutHeader,force:hasRecordId"
+                controller="AccountWizardController">
+
+
+    <aura:attribute name="recordId" type="String"/>
+    <aura:attribute name="blockPrev" type="Boolean" default=""/>
+    <aura:attribute name="currentComponent" type="String" default="Nichego"/>
+    <aura:attribute name="listComponents" type="List" default=""/>
+    <aura:attribute name="visibleComponent" type="List" default=""/>
+    <aura:attribute name="indexComponent" type="String" default="0"/>
+    <aura:attribute name="currentAccount" type="Account" default="{ 'sobjectType': 'Account',
+                                                                                              'Name': '',
+                                                                                              }"/>
+
+    <aura:handler name="init" value="{! this }" action="{! c.init }"/>
+
+
+    <lightning:overlayLibrary aura:id="overlayModal"/>
+
+    <lightning:card title="Account Wizard">
+
+        <aura:iteration items="{!v.visibleComponent}" var="item">
+            {!item}
+        </aura:iteration>
+
+        <aura:set attribute="footer">
+            <lightning:button name="Cancel"
+                              class="slds-float--left"
+                              label="Cancel"
+                              onclick="{!c.cancel}"/>
+            <lightning:button name="Prev"
+                              disabled="{!v.blockPrev}"
+                              label="Prev"
+                              onclick="{!c.previous}"/>
+            <lightning:button aura:id="nextButton"
+                              name="Next"
+                              label="Next"
+                              onclick="{!c.next}"/>
+            <lightning:button aura:id="saveButton"
+                              class="slds-float--right slds-hide"
+                              name="Save"
+                              label="Save"
+                              onclick="{!c.save}"/>
+        </aura:set>
+    </lightning:card>
+
+</aura:component>

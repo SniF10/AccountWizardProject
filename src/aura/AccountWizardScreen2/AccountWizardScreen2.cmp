@@ -1,0 +1,9 @@
+<aura:component extends="c:AccountWizardItem">
+
+    <aura:handler name="init" value="{! this }" action="{! c.init }"/>
+
+    <lightning:input type="text" name="Billing State" label="Billing State" value="{!v.currentAccount.BillingState}" />
+    <lightning:input type="text" name="Billing ZIP" label="Billing ZIP" value="{!v.currentAccount.BillingPostalCode}" />
+    <lightning:input type="text" name="Billing Street" label="Billing Street" value="{!v.currentAccount.BillingStreet}" />
+	
+</aura:component>

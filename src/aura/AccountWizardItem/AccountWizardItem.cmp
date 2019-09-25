@@ -1,0 +1,10 @@
+<aura:component abstract='true' controller="AccountWizardController" >
+
+     <aura:attribute name="recordId" type="String" />
+     <aura:attribute name="currentAccount" type="Account" default=""/>
+
+
+     {!v.body}
+
+	
+</aura:component>

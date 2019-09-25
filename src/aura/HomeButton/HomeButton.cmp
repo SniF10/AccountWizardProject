@@ -1,0 +1,10 @@
+<aura:component implements="flexipage:availableForAllPageTypes" >
+
+    <lightning:overlayLibrary aura:id="overlayLib"/>
+
+
+    <lightning:button name="Create Account"
+                      label="Create Account"
+                      onclick="{!c.createComponent}"/>
+	
+</aura:component>

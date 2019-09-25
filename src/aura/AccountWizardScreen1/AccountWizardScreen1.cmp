@@ -1,0 +1,10 @@
+<aura:component extends="c:AccountWizardItem">
+
+    <aura:method name="validationRecord" action="{!c.validationRecord}" access="public">
+        <aura:attribute name="callback" type="Function" />
+    </aura:method>
+
+
+    <lightning:input type="text" name="Account Name" label="Account Name" value="{!v.currentAccount.Name}" required="true"/>
+	
+</aura:component>
